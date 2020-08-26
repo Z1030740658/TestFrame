@@ -46,7 +46,7 @@ Putting the dependencies into a requirements.txt and then using pip will work bu
         cd C:\Users\%username%\AppData\Local\Android\sdk\emulator
         emulator @Pixel_2_API_29
 
-where Pixel_2_API_29 - the name of my emulator.
+where Pixel_2_API_29 - the name of emulator, as example.
 
 2. Plase .apk file that should be tested to the root of project and set its corresponding name in config, `APK` variable.
 
@@ -67,6 +67,7 @@ where Pixel_2_API_29 - the name of my emulator.
 
 1. You should have driver placed in the root directory.
 2. Set its corresponding name in config, `WEB_DRIVER` variable.
+3. In config, `HEADLESS` is set to False now.
 
 ---
 
