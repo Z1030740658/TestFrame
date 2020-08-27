@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class TestUrls(Enum):
+class Urls(Enum):
     """
     All kind of web urls for test to concatenate with base url
     """
