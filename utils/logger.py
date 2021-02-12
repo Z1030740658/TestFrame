@@ -7,7 +7,6 @@ from datetime import datetime
 import os
 from utils import PROJECT_PATH
 
-
 log_folder = os.path.join(PROJECT_PATH, "logs")
 log_name = "{}.log"
 

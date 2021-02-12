@@ -17,8 +17,8 @@ _env_config = get_env_config(ENV)
 
 log.info(f"Environment is: {ENV}")
 
-# API
-API_HOST = _env_config["api_host"]
+# API hosts
+REST_SERVICE_HOST = _env_config["rest_service_host"]
 
 # UI wait time
 UI_MAX_RESPONSE_TIME = 25.0
@@ -38,3 +38,8 @@ APK = "awesome.apk"
 WEB_URL = _env_config["web_host"]
 WEB_DRIVER = "CHROME"
 HEADLESS = False
+
+# DB
+DB_HOST = _env_config["db_connection"]["host"]
+DB_USER = _env_config["db_connection"]["username"]
+DB_PASSWORD = _env_config["db_connection"]["password"]

@@ -1,8 +1,8 @@
-import json
 from utils.faker import fake
+from models.base_model import BaseModel
 
 
-class User:
+class User(BaseModel):
     def __init__(self, name=None, job=None, id_=None, createdAt=None, gender='female'):
         if id_ is not None:
             self.id = id_
@@ -11,9 +11,6 @@ class User:
             # example: fake.past_datetime(start_date='-30d').replace(microsecond=0).isoformat()
         self.name = name or self.generate_name(gender)
         self.job = job or fake.job()
-
-    def return_body(self):
-        return json.loads(json.dumps(self, default=lambda o: o.__dict__))
 
     @staticmethod
     def generate_name(gender):

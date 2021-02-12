@@ -10,15 +10,16 @@ class Request:
     Class request builder
     :param method: requests HTTP method, requests.post, requests.get etc.
     :param base_uri: base URL for request
-    :param: validate: function which takes one parameter - requests Response object (optional)
+    :param: validate: if True - verify that response is OK automatically
     """
 
-    def __init__(self, method, base_uri, validate=None):
+    def __init__(self, method, base_uri, validate=True):
         self._method = method
         self._base_uri = base_uri
         self._validate = validate
         self._uri = None
         self._body = None
+        self._data = None
         self._headers = {}
         self._query_params = {}
 
@@ -31,10 +32,17 @@ class Request:
 
     def body(self, body):
         """
-        Set request body
+        Set request JSON body
         :param body: either Python JSON-serializable object or string
         """
         self._body = body
+
+    def form_data(self, data):
+        """
+        Set form data
+        :param data: dict
+        """
+        self._data = data
 
     def headers(self, **headers):
         """
@@ -56,8 +64,11 @@ class Request:
             log.debug("QUERY_PARAMS: {}".format(self._query_params))
         if self._body:
             log.debug("BODY: {}".format(self._body))
+        if self._data:
+            log.debug("FORM DATA: {}".format(self._data))
 
-        res = self._method(self._uri, json=self._body, headers=self._headers, params=self._query_params)
+        res = self._method(self._uri, json=self._body, data=self._data, headers=self._headers,
+                           params=self._query_params)
         if self._validate:
             self._is_response_ok(res)
         return Response(res)

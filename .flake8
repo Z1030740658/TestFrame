@@ -4,11 +4,13 @@
 # E741 ambiguous variable name
 # W291 trailing whitespace
 # W293 blank line contains whitespace
+# W504 line break after binary operator https://stackoverflow.com/questions/57074300/what-is-the-recommended-way-to-break-long-if-statement-w504-line-break-after-b
 
 ignore =
     E741,
     W291,
-    W293
+    W293,
+    W504
 exclude =
     .git,
     __pycache__,

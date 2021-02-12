@@ -66,7 +66,7 @@ where Pixel_2_API_29 - the name of emulator, as example.
 ## To run web UI tests.
 
 1. You should have driver placed in the root directory.
-2. Set its corresponding name in config, `WEB_DRIVER` variable.
+2. Set its corresponding name in config, `WEB_DRIVER` variable, set to CHROME now.
 3. In config, `HEADLESS` is set to False now.
 
 ---
@@ -75,6 +75,6 @@ where Pixel_2_API_29 - the name of emulator, as example.
 
 Currently, there are three projects with draft tests, they are in 'tests' folder:
 
-- api_backend
+- rest_service
 - android_ui
 - web_ui

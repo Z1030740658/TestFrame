@@ -6,7 +6,9 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+boto3 = "1.14.49"
 flake8 = "3.8.3"
+humanreadable = "0.1.0"
 requests = "2.24.0"
 jsonschema = "3.2.0"
 appium-python-client = "1.0.2"
@@ -14,7 +16,10 @@ faker = "4.1.1"
 pytest = "5.4.3"
 pika = "1.1.0"
 python-dotenv = "0.14.0"
-
+pytz = "2020.1"
+mysql-connector-python = "8.0.21"
+locust = "1.4.1"
+tzlocal = "2.1"
 
 [requires]
 python_version = "3.7"

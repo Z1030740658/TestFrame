@@ -47,6 +47,16 @@ class Waits:
         return self.wait_element.until(
             ec.presence_of_element_located((By.XPATH, element)), message)
 
+    def until_element_visible_by_name(self, element, message=None):
+        """
+        wait until web element/elements if visible with delay 0,5 second by default
+        @param element: NAME
+        @param message: Assertion message
+        @return: web element/elements else False
+        """
+        return self.wait_element.until(
+            ec.visibility_of_element_located((By.NAME, element)), message)
+
     def until_element_visible_by_class_name(self, element, message=None):
         """
         wait until web element/elements if visible with delay 0,5 second by default
@@ -54,6 +64,7 @@ class Waits:
         @param message: Assertion message
         @return: web element/elements else False
         """
+        log.info(f"Looking for class: {element}")
         return self.wait_element.until(
             ec.visibility_of_element_located((By.CLASS_NAME, element)), message)
 
@@ -67,16 +78,6 @@ class Waits:
         log.info(f"Looking for xpath: {element}")
         return self.wait_element.until(
             ec.visibility_of_element_located((By.XPATH, element)), message)
-
-    def until_element_visible_by_name(self, element, message=None):
-        """
-        wait until web element/elements if visible with delay 0,5 second by default
-        @param element: NAME
-        @param message: Assertion message
-        @return: web element/elements else False
-        """
-        return self.wait_element.until(
-            ec.visibility_of_element_located((By.NAME, element)), message)
 
     def until_elements_visible_by_class_name(self, element, message=None):
         """
@@ -99,3 +100,14 @@ class Waits:
         """
         return self.wait_element.until(
             ec.visibility_of_any_elements_located((By.XPATH, element)), message)
+
+    def until_element_not_visible_by_xpath(self, element, message=None):
+        """
+        wait until web element/elements is not visible
+        @param element: XPATH
+        @param message: Assertion message
+        @return: web element/elements else False
+        """
+        log.info(f"Looking for xpath: {element}")
+        return self.wait_element.until(
+            ec.invisibility_of_element_located((By.XPATH, element)), message)

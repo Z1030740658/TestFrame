@@ -1,5 +1,3 @@
-import json
-
 
 class Response:
     """
@@ -25,6 +23,6 @@ class Response:
         return str(self._response.content, "utf-8")
 
     @property
-    def body_object(self):
-        """Return deserialized response body"""
-        return json.loads(self._response.content)
+    def cookies(self):
+        """Return response cookies (Set-Cookie header) dict object"""
+        return self._response.cookies

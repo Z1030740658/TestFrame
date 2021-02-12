@@ -1,12 +1,8 @@
-from services.http.http_client import HttpClient
+from services.http.rest_service.base import RestService
 from utils.enums.endpoints import Endpoints
-from configs import API_HOST
 
 
-class UsersServiceHttpClient(HttpClient):
-
-    def __init__(self, validate=False):
-        super().__init__(API_HOST, validate)
+class UsersServiceHttpClient(RestService):
 
     def get_user_by_Id(self, id=None):
         req = self.get()
