@@ -36,8 +36,12 @@ def get_created_users_back(service, body):
 
 def assert_response_contains_request_data(response, request):
     assert all(k in response.json and response.json[k] == v for k, v in request.items())
-    # could be slightly different validation as well: assert ordered(response.json) == ordered(request)
+    """
+    could be slightly different validation as well: assert ordered(response.json) == ordered(request)
+    or better to use utils/object_comparator package methods:
+    equal_dictionaries, equal_lists
+    """
 
 
-# pipenv run pytest tests/api_backend
-# pipenv run pytest tests/api_backend/test_users_api.py
+# pipenv run pytest tests/rest_service
+# pipenv run pytest tests/rest_service/test_users_api.py
