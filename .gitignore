@@ -71,3 +71,5 @@ tests/test_should_be_gitignored.py
 pip-wheel-metadata/
 
 *.exe
+chromedriver
+venv/

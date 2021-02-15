@@ -35,7 +35,8 @@ Putting the dependencies into a requirements.txt and then using pip will work bu
 - Create ".env" file with "ENV=development" row in it in the root directory.
 - Run all tests: `pipenv run pytest`
 - Run project related tests: `pipenv run pytest tests/{project_name}`
-- Run project related tests subset: `pipenv run pytest tests/{project_name}/{test_name}.py`
+- Run project related tests subset: `pipenv run pytest tests/{project_name}/{tests_file}.py`
+- Run project related test: `pipenv run pytest tests/{project_name}/{tests_file}.py::{test_name}`
 
 ---
 
