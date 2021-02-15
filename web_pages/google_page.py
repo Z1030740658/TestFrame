@@ -11,6 +11,7 @@ class GooglePage(BasePage):
 
     def search(self, question):
         self.driver.get(WEB_URL + Urls.test_url.value)
+        self.wait_page_loaded()
         search_input = self.wait.until_element_visible_by_name('q')
         search_input.send_keys(question)
         search_input.send_keys(Keys.ENTER)
