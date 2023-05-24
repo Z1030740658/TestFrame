@@ -72,4 +72,11 @@ pip-wheel-metadata/
 
 *.exe
 chromedriver
-venv/
+venv/.lightly
+.c_bin
+.classes
+logs
+node_modules
+dist
+dist-ssr
+*.local
