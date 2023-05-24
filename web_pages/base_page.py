@@ -1,6 +1,7 @@
 import time
 from web_pages.waits import Waits
 from utils.logger import log
+from fixtures.webdriver_setup import get_browser_driver
 
 
 class BasePage:
@@ -8,7 +9,7 @@ class BasePage:
     BasePage should contain all common site-page functionality
     """
 
-    def __init__(self, driver):
+    def __init__(self, driver=get_browser_driver()):
         self.driver = driver
 
     @property

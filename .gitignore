@@ -80,4 +80,5 @@ node_modules
 dist
 dist-ssr
 *.local
-.lightly/
+.lightly/.lightly
+.lightly

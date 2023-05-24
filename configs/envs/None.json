@@ -1,0 +1,11 @@
+{
+    "rest_service_host": "https://reqres.in",
+    "web_host" : "https://google.com",
+    "app_username" : "app_username",
+    "app_password" : "app_password",
+    "db_connection": {
+        "host": "host.com",
+        "username": "admin",
+        "password": "password"
+    }
+}

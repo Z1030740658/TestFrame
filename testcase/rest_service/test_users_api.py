@@ -3,6 +3,8 @@ from services.http.rest_service.users_service import UsersServiceHttpClient
 # from utils.sort import ordered # read below 
 from test_data import USER_IDS
 
+def setup():
+    print(456)
 
 def test_create_user(user):
     users_http = UsersServiceHttpClient(validate=True)
@@ -41,7 +43,8 @@ def assert_response_contains_request_data(response, request):
     or better to use utils/object_comparator package methods:
     equal_dictionaries, equal_lists
     """
-
+def teardown():
+    print('123')
 
 # pipenv run pytest tests/rest_service
 # pipenv run pytest tests/rest_service/test_users_api.py
