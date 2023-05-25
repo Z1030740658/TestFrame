@@ -15,7 +15,8 @@ class BaseSSHClient:
         self.port= int(port)
         self.user = user
         self.password = password
-        ssh_config = {"hostname": self.host, "username": self.user, "password": self.password, "port": self.port}
+        ssh_config = {"hostname": self.host, "username": self.user, "password": self.password, "port": self.port,
+                      "allow_agent": False, "look_for_keys": False}
         self.client = paramiko.SSHClient()
         self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         self.client.connect(**ssh_config)
