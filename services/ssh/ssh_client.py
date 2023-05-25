@@ -9,7 +9,7 @@ class BaseSSHClient:
     Shall be used as a context manager to ensure that connections are opened/closed when needed
     """
 
-    def __init__(self, host=SSH_HOST, port=SSH_HOST, user=SSH_USER, password=SSH_PASSWORD):
+    def __init__(self, host=SSH_HOST, port=SSH_PORT, user=SSH_USER, password=SSH_PASSWORD):
         """Initialize SSH connections"""
         self.host = host
         self.port= int(port)
