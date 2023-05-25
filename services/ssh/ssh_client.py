@@ -1,8 +1,9 @@
 from configs import SSH_USER, SSH_HOST, SSH_PASSWORD, SSH_PORT
 import paramiko
+from utils.logger import log
 
 
-class BaseSshClient:
+class BaseSSHClient:
     """
     Base class for SSH clients.
     Shall be used as a context manager to ensure that connections are opened/closed when needed
@@ -17,35 +18,27 @@ class BaseSshClient:
         ssh_config = {"hostname": self.host, "username": self.user, "password": self.password, "port": self.port}
         self.client = paramiko.SSHClient()
         self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        self.connection = self.client.connect(**ssh_config)
+        self.client.connect(**ssh_config)
 
-    def execute(self, query):
-        try:
-            self.cursor.execute(query)
-            self.connection.commit()
-        except Error as e:
-            log.error(f"Error on query execution: {e}")
-            raise e
+    def execute_one(self, cmd):
+        stdin, stdout, stderr = self.client.exec_command(cmd, timeout=100)
+        res = stdout.read().decode('utf-8')
+        err = stderr.read().decode('utf-8')
+        log.info(res + err)
+        return res + err
 
-    def query_all(self, query):
-        try:
-            self.cursor.execute(query)
-            return self.cursor.fetchall()
-        except Error as e:
-            log.error(f"Error on query execution: {e}")
-            raise e
-
-    def query_one(self, query):
-        try:
-            self.cursor.execute(query)
-            return self.cursor.fetchone()
-        except Error as e:
-            log.error(f"Error on query execution: {e}")
-            raise e
+    def execute_all(self, cmd):
+        result = ''
+        for single_cmd in cmd.split(';'):
+            stdin, stdout, stderr = self.client.exec_command(cmd, timeout=100)
+            res = stdout.read().decode('utf-8')
+            err = stderr.read().decode('utf-8')
+            log.info(res + err)
+            result = result + res + err
+        return result
 
     def close(self):
         """
-        Close SSH connections at exit
+        Close SSH connections
         """
-        self.cursor.close()
-        self.connection.close()
+        self.client.close()
