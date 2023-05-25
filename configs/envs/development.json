@@ -4,8 +4,16 @@
     "app_username" : "app_username",
     "app_password" : "app_password",
     "db_connection": {
+        "db_type": "mysql",
+        "db_port": "3306",
         "host": "host.com",
         "username": "admin",
         "password": "password"
+    }, 
+    "ssh_connection": {
+        "ssh_port": "22",
+        "ssh_host": "10.244.171.148",
+        "ssh_username": "root",
+        "ssh_password": "Huawei@123"
     }
 }

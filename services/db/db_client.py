@@ -1,3 +1,4 @@
+from configs import DB_HOST, DB_USER, DB_PASSWORD, DB_TYPE, DB_PORT
 import mysql.connector
 
 
@@ -11,26 +12,47 @@ class BaseDbClient:
     # after we exit 'with' block, connections are closed.
     """
 
-    def __init__(self, host, user, password, database):
+    def __init__(self, database, host=DB_HOST, PORT=DB_PORT, user=DB_USER, password=DB_PASSWORD, dbtype=DB_TYPE):
+        """Initialize DB connections"""
         self.host = host
+        self.port= int(port)
+        self.dbtype = dbtype
         self.database = database
         self.user = user
         self.password = password
         self.connection = None
         self.cursor = None
-
-    def __enter__(self):
-        """Initialize DB connections"""
-        db_config = {"host": self.host, "user": self.user, "password": self.password}
+        db_config = {"host": self.host, "user": self.user, "password": self.password, "port": self.port}
         if self.database:
             db_config["database"] = self.database
-
         self.connection = mysql.connector.connect(**db_config)
         self.cursor = self.connection.cursor(buffered=True)
 
-        return self
+    def execute(self, query):
+        try:
+            self.cursor.execute(query)
+            self.connection.commit()
+        except Error as e:
+            log.error(f"Error on query execution: {e}")
+            raise e
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def query_all(self, query):
+        try:
+            self.cursor.execute(query)
+            return self.cursor.fetchall()
+        except Error as e:
+            log.error(f"Error on query execution: {e}")
+            raise e
+
+    def query_one(self, query):
+        try:
+            self.cursor.execute(query)
+            return self.cursor.fetchone()
+        except Error as e:
+            log.error(f"Error on query execution: {e}")
+            raise e
+
+    def close(self):
         """
         Close DB connections at exit
         """

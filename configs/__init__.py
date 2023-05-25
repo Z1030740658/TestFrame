@@ -43,3 +43,11 @@ HEADLESS = False
 DB_HOST = _env_config["db_connection"]["host"]
 DB_USER = _env_config["db_connection"]["username"]
 DB_PASSWORD = _env_config["db_connection"]["password"]
+DB_TYPE = _env_config["db_connection"]["db_type"]
+DB_PORT = _env_config["db_connection"]["db_port"]
+
+#SSH
+SSH_PORT = _env_config["ssh_connection"]["ssh_port"]
+SSH_USER = _env_config["ssh_connection"]["ssh_username"]
+SSH_HOST = _env_config["ssh_connection"]["ssh_host"]
+SSH_PASSWORD = _env_config["ssh_connection"]["ssh_password"]
