@@ -12,10 +12,10 @@ class BaseDbClient:
     # after we exit 'with' block, connections are closed.
     """
 
-    def __init__(self, database, host=DB_HOST, PORT=DB_PORT, user=DB_USER, password=DB_PASSWORD, dbtype=DB_TYPE):
+    def __init__(self, database, host=DB_HOST, port=DB_PORT, user=DB_USER, password=DB_PASSWORD, dbtype=DB_TYPE):
         """Initialize DB connections"""
         self.host = host
-        self.port= int(port)
+        self.port = int(port)
         self.dbtype = dbtype
         self.database = database
         self.user = user
