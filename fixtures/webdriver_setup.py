@@ -32,7 +32,8 @@ def get_browser_driver():
         chromedriver = os.path.join(PROJECT_PATH, "chromedriver.exe")
         chrome_options = ch_options()
         if HEADLESS:
-            chrome_options.set_headless()
+            chrome_options.add_argument('--headless')
+            chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
         browser_driver = Chrome(executable_path=chromedriver,
                                 desired_capabilities=capabilities,
                                 options=chrome_options)
@@ -40,7 +41,7 @@ def get_browser_driver():
         geckodriver = os.path.join(PROJECT_PATH, "geckodriver.exe")
         firefox_options = ff_options()
         if HEADLESS:
-            firefox_options.set_headless()
+            firefox_options.add_argument('--headless')
         browser_driver = Firefox(executable_path=geckodriver,
                                  capabilities=capabilities,
                                  options=firefox_options)
@@ -48,7 +49,7 @@ def get_browser_driver():
         safaridriver = os.path.join(PROJECT_PATH, "safaridriver.exe")
         # headless mode is not possible right now in Safari
         browser_driver = Safari(executable_path=safaridriver,
-                                capabilities=capabilities)
+                                desired_capabilities=capabilities)
     else:
         raise Exception('Unknown/unsupported driver selected: ' + WEB_DRIVER)
 
