@@ -33,6 +33,7 @@ def get_browser_driver():
         chrome_options = ch_options()
         if HEADLESS:
             chrome_options.add_argument('--headless')
+            chrome_options.add_argument('–ignore-certificate-errors')
             chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
         browser_driver = Chrome(executable_path=chromedriver,
                                 desired_capabilities=capabilities,
@@ -42,6 +43,7 @@ def get_browser_driver():
         firefox_options = ff_options()
         if HEADLESS:
             firefox_options.add_argument('--headless')
+            firefox_options.add_argument('–ignore-certificate-errors')
         browser_driver = Firefox(executable_path=geckodriver,
                                  capabilities=capabilities,
                                  options=firefox_options)
