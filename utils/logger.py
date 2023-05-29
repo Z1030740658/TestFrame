@@ -8,7 +8,7 @@ import os
 from utils import PROJECT_PATH
 
 log_folder = os.path.join(PROJECT_PATH, "logs")
-log_name = "{}.log"
+log_name = "root.log"
 
 # create folder if not exists
 if not os.path.exists(log_folder):
