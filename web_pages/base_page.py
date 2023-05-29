@@ -1,6 +1,7 @@
 import time
 from web_pages.waits import Waits
 from utils.logger import log
+from selenium.webdriver.common.by import By
 from fixtures.webdriver_setup import get_browser_driver
 
 
@@ -27,3 +28,7 @@ class BasePage:
             if self.driver.execute_script('return document.readyState;') == 'complete':
                 log.info("PAGE_LOADED")
                 break
+
+    def find_by_xpath(self, xpath):
+        """find element by xpath"""
+        self.driver.find_element(by=By.XPATH, value=xpath)

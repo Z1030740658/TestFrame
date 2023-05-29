@@ -1,6 +1,6 @@
 {
     "rest_service_host": "https://reqres.in",
-    "web_host" : "https://google.com",
+    "web_host" : "https://www.baidu.com",
     "app_username" : "app_username",
     "app_password" : "app_password",
     "db_connection": {
