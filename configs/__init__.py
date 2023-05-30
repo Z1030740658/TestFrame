@@ -15,7 +15,7 @@ if os.path.exists(dotenv_file):
 ENV = getenv("ENV")
 _env_config = get_env_config(ENV)
 
-log.info(f"Environment is: {ENV}")
+log.info(f'Environment is: {_env_config["env_name"]}')
 
 # API hosts
 REST_SERVICE_HOST = _env_config["rest_service_host"]
@@ -46,7 +46,7 @@ DB_PASSWORD = _env_config["db_connection"]["password"]
 DB_TYPE = _env_config["db_connection"]["db_type"]
 DB_PORT = _env_config["db_connection"]["db_port"]
 
-#SSH
+# SSH
 SSH_PORT = _env_config["ssh_connection"]["ssh_port"]
 SSH_USER = _env_config["ssh_connection"]["ssh_username"]
 SSH_HOST = _env_config["ssh_connection"]["ssh_host"]
