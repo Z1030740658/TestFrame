@@ -1,0 +1,47 @@
+{
+    "pri_db": {
+        "db_type": "mysql",
+        "db_port": "3306",
+        "host": "host.com",
+        "username": "admin",
+        "password": "password"
+    },
+
+    "sta1_db": {
+        "db_type": "mysql",
+        "db_port": "3306",
+        "host": "host.com",
+        "username": "admin",
+        "password": "password"
+    },
+
+    "sta2_db": {
+        "db_type": "mysql",
+        "db_port": "3306",
+        "host": "host.com",
+        "username": "admin",
+        "password": "password"
+    },
+
+
+    "pri_ssh": {
+        "ssh_port": "22",
+        "ssh_host": "192.168.0.0",
+        "ssh_username": "root",
+        "ssh_password": "Huawei@123"
+    },
+
+    "sta1_ssh": {
+        "ssh_port": "22",
+        "ssh_host": "192.168.0.12",
+        "ssh_username": "root",
+        "ssh_password": "Huawei@123"
+    },
+
+    "sta2_ssh": {
+        "ssh_port": "22",
+        "ssh_host": "192.168.0.12",
+        "ssh_username": "root",
+        "ssh_password": "Huawei@123"
+    }
+}

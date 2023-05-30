@@ -12,4 +12,4 @@ class TestDemon:
     def teardown(self):
         self.ssh_client.close()
 # pipenv run pytest tests/web_ui
-# pipenv run pytest tests/web_ui/test_search_for_driver_docs.py
+# pipenv run pytest testcase\ssh_test\test_func1.py

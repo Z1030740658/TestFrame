@@ -1,5 +1,8 @@
-from configs import DB_HOST, DB_USER, DB_PASSWORD, DB_TYPE, DB_PORT
 import mysql.connector
+from mysql.connector import Error
+
+import configs
+from utils.logger import log
 
 
 class BaseDbClient:
@@ -12,21 +15,39 @@ class BaseDbClient:
     # after we exit 'with' block, connections are closed.
     """
 
-    def __init__(self, database, host=DB_HOST, port=DB_PORT, user=DB_USER, password=DB_PASSWORD, dbtype=DB_TYPE):
+    def __init__(self, database, node='pri', host=configs.PRI_DB_HOST, port=configs.PRI_DB_PORT,
+                 user=configs.PRI_DB_USER, password=configs.PRI_DB_PASSWORD, dbtype=configs.PRI_DB_TYPE):
         """Initialize DB connections"""
-        self.host = host
-        self.port = int(port)
-        self.dbtype = dbtype
+        if node == 'sta1':
+            self.host = configs.S1_DB_HOST
+            self.port = int(configs.S1_DB_HOST)
+            self.dbtype = configs.S1_DB_TYPE
+            self.user = configs.S1_DB_USER
+            self.password = configs.S1_DB_PASSWORD
+        elif node == 'sta2':
+            self.host = configs.S2_DB_HOST
+            self.port = int(configs.S2_DB_HOST)
+            self.dbtype = configs.S2_DB_TYPE
+            self.user = configs.S2_DB_USER
+            self.password = configs.S2_DB_PASSWORD
+        else:
+            self.host = host
+            self.port = int(port)
+            self.dbtype = dbtype
+            self.user = user
+            self.password = password
         self.database = database
-        self.user = user
-        self.password = password
         self.connection = None
         self.cursor = None
-        db_config = {"host": self.host, "user": self.user, "password": self.password, "port": self.port}
-        if self.database:
-            db_config["database"] = self.database
-        self.connection = mysql.connector.connect(**db_config)
-        self.cursor = self.connection.cursor(buffered=True)
+        db_config = {"host": self.host, "user": self.user, "password": self.password,
+                     "port": self.port, "database": self.database}
+        try:
+            self.connection = mysql.connector.connect(**db_config)
+            self.cursor = self.connection.cursor(buffered=True)
+        except Exception as e:
+            log.info('------DB connected fail info start------')
+            log.error(str(e))
+            log.info('------DB connected fail info end------')
 
     def execute(self, query):
         try:
