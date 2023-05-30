@@ -3,6 +3,12 @@
     "web_host" : "https://www.baidu.com",
     "app_username" : "app_username",
     "app_password" : "app_password",
+    "appium_url" : "http://127.0.0.1:4723/wd/hub",
+    "platform_name" : "Android",
+    "platform_version" : "10.0",
+    "device_name" : "Pixel 2",
+    "apk" : "awesome.apk",
+    "web_driver" : "CHROME",
     "db_connection": {
         "db_type": "mysql",
         "db_port": "3306",

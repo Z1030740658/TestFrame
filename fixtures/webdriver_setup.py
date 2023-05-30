@@ -11,7 +11,8 @@ from utils import PROJECT_PATH
 @pytest.fixture()
 def web_driver():
     driver = get_browser_driver()
-    driver.set_window_size(1920, 1080)  # set default screen size
+    # driver.set_window_size(1920, 1080)  # set default screen size
+    driver.maximize_window()  # set default screen size
 
     yield driver
     # close the browser

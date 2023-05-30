@@ -28,15 +28,15 @@ APP_USERNAME = _env_config["app_username"]
 APP_PASSWORD = _env_config["app_password"]
 
 # Appium
-APPIUM_URL = "http://127.0.0.1:4723/wd/hub"
-PLATFORM_NAME = "Android"
-PLATFORM_VERSION = "10.0"
-DEVICE_NAME = "Pixel 2"
-APK = "awesome.apk"
+APPIUM_URL = _env_config["appium_url"]
+PLATFORM_NAME = _env_config["platform_name"]
+PLATFORM_VERSION = _env_config["platform_version"]
+DEVICE_NAME = _env_config["device_name"]
+APK = _env_config["apk"]
 
 # Webdriver
 WEB_URL = _env_config["web_host"]
-WEB_DRIVER = "CHROME"
+WEB_DRIVER = _env_config["web_driver"]
 HEADLESS = False
 
 # DB
