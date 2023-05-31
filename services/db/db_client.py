@@ -1,5 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
+import psycopg2
+import cx_Oracle
 
 import configs
 from utils.logger import log
@@ -42,8 +44,15 @@ class BaseDbClient:
         db_config = {"host": self.host, "user": self.user, "password": self.password,
                      "port": self.port, "database": self.database}
         try:
-            self.connection = mysql.connector.connect(**db_config)
-            self.cursor = self.connection.cursor(buffered=True)
+            if self.dbtype == 'mysql':
+                self.connection = mysql.connector.connect(**db_config)
+                self.cursor = self.connection.cursor(buffered=True)
+            elif self.dbtype == 'opengauss':
+                self.connection = psycopg2.connect(**db_config)
+                self.cursor = self.connection.cursor()
+            elif self.dbtype == 'oracle':
+                self.connection = cx_Oracle.connect(**db_config)
+                self.cursor = self.connection.cursor()
         except Exception as e:
             log.info('------DB connected fail info start------')
             log.error(str(e))

@@ -22,6 +22,8 @@ locust = "1.4.1"
 tzlocal = "2.1"
 paramiko = "3.1.0"
 selenium = "4.5.0"
+cx-oracle = "8.3.0"
+psycopg2 = "2.9.6"
 
 [requires]
 python_version = "3.7"
