@@ -53,6 +53,8 @@ class BaseDbClient:
             elif self.dbtype == 'oracle':
                 self.connection = cx_Oracle.connect(**db_config)
                 self.cursor = self.connection.cursor()
+            else:
+                raise ValueError("only support mysql opengauss oracle,please check the value of db_type and retry")
         except Exception as e:
             log.info('------DB connected fail info start------')
             log.error(str(e))
